@@ -1,6 +1,7 @@
 import {BrowserRouter as ReactRouter, Route, RouteProps, Switch} from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 import { Signin } from '../../pages/signin';
+import { SignUp } from '../../pages/signup';
 
 export function Router(){
 
@@ -11,8 +12,8 @@ export function Router(){
             exact: true,
         },
         {
-            children: <h1>Logged In</h1>,
-            path: '/xD',    
+            children: <SignUp />,
+            path: ROUTES.SIGNUP,    
             exact: true,
         },
         {

@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, InterfaceRegistrableInputProps } from '../../components/form';
 import { LOCAL_STORAGE } from '../../constants/localStorage';
-import { LoginRequest, useLogin } from '../../hooks/useLogin';
+import { SignInRequest, useSignIn } from '../../hooks/useSignIn';
 import { useStyles } from './styles';
 
 export function Signin() {
     let history = useHistory();
     const classes = useStyles();
-    const {execute: login, data, unexpectedError, validationError, loading } = useLogin();
+    const {execute: signIn, data, unexpectedError, validationError, loading } = useSignIn();
     
     useEffect(() => {
         if(data?.token) {
@@ -18,8 +18,8 @@ export function Signin() {
         }
     }, [data, history])
 
-    const onSubmit = async (loginRequest: LoginRequest) => {
-        login(loginRequest);
+    const onSubmit = async (signInRequest: SignInRequest) => {
+        signIn(signInRequest);
     };
 
     const inputs: InterfaceRegistrableInputProps = [
@@ -46,7 +46,7 @@ export function Signin() {
     return (
         <Box className={classes.root}>
             <Typography component="h1" variant="h5">Sign in</Typography>
-            <Form axiosResponse={{unexpectedError, validationError, loading}} onSubmit={onSubmit} inputs={inputs}></Form>
+            <Form axiosResponse={{unexpectedError, validationError, loading}} onSubmit={onSubmit} inputs={inputs} buttonText="Sign in"></Form>
         </Box>
     )
 }
