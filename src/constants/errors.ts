@@ -1,0 +1,1 @@
+export const SOMETHING_UNUSUAL = 'Something unusual happened, please try again';
