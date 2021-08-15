@@ -24,22 +24,13 @@ export function Signin() {
 
     const inputs: InterfaceRegistrableInputProps = [
         {
-            required: true,
-            margin: 'normal',
-            fullWidth: true,
             registerName: 'identifier',
             label: 'E-mail',
-            type: 'email',
-            variant: 'outlined',
         },
         {
-            required: true,
-            margin: 'normal',
-            fullWidth: true,
             registerName: 'password',
             label: 'Password',
             type: 'password',
-            variant: 'outlined',
         }
     ]
 

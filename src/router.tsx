@@ -1,7 +1,7 @@
 import {BrowserRouter as ReactRouter, Route, RouteProps, Switch} from 'react-router-dom';
-import { ROUTES } from '../../constants/routes';
-import { Signin } from '../../pages/signin';
-import { SignUp } from '../../pages/signup';
+import { ROUTES } from './constants/routes';
+import { Signin } from './pages/signin';
+import { SignUp } from './pages/signup';
 
 export function Router(){
 

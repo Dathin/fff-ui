@@ -4,8 +4,10 @@ import { useHistory } from "react-router-dom";
 import { Form, InterfaceRegistrableInputProps } from "../../components/form";
 import { ROUTES } from "../../constants/routes";
 import { SignUpRequest, useSignUp } from "../../hooks/useSignUp";
+import { useStyles } from "./styles";
 
 export function SignUp(){
+    const classes = useStyles();
     let history = useHistory();
     const {execute: signUp, data, unexpectedError, validationError, loading } = useSignUp();
 
@@ -21,27 +23,18 @@ export function SignUp(){
 
     const inputs: InterfaceRegistrableInputProps = [
         {
-            required: true,
-            margin: 'normal',
-            fullWidth: true,
             registerName: 'identifier',
             label: 'E-mail',
-            type: 'email',
-            variant: 'outlined',
         },
         {
-            required: true,
-            margin: 'normal',
-            fullWidth: true,
             registerName: 'password',
             label: 'Password',
             type: 'password',
-            variant: 'outlined',
         }
     ]
 
     return (
-        <Box>
+        <Box className={classes.root}>
             <Typography component="h1" variant="h5">Sign up</Typography>
             <Form axiosResponse={{unexpectedError, validationError, loading}} onSubmit={onSubmit} inputs={inputs} buttonText="Sign up"></Form>
         </Box>
