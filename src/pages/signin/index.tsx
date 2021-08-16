@@ -1,25 +1,23 @@
-import { Box, Typography } from '@material-ui/core';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, InterfaceRegistrableInputProps } from '../../components/form';
 import { LOCAL_STORAGE } from '../../constants/localStorage';
+import { ROUTES } from '../../constants/routes';
 import { SignInRequest, useSignIn } from '../../hooks/useSignIn';
-import { useStyles } from './styles';
 
 export function Signin() {
     let history = useHistory();
-    const classes = useStyles();
     const {execute: signIn, data, unexpectedError, validationError, loading } = useSignIn();
     
     useEffect(() => {
         if(data?.token) {
             localStorage.setItem(LOCAL_STORAGE.TOKEN, data.token);
-            history.push('xD')
+            history.push(ROUTES.CREATE_ACCOUNT)
         }
     }, [data, history])
 
     const onSubmit = async (signInRequest: SignInRequest) => {
-        signIn(signInRequest);
+        signIn({...signInRequest, webClient: true});
     };
 
     const inputs: InterfaceRegistrableInputProps = [
@@ -35,9 +33,6 @@ export function Signin() {
     ]
 
     return (
-        <Box className={classes.root}>
-            <Typography component="h1" variant="h5">Sign in</Typography>
-            <Form axiosResponse={{unexpectedError, validationError, loading}} onSubmit={onSubmit} inputs={inputs} buttonText="Sign in"></Form>
-        </Box>
+        <Form axiosResponse={{unexpectedError, validationError, loading}} onSubmit={onSubmit} inputs={inputs} buttonText="Sign in" formName="Sign in"></Form>
     )
 }

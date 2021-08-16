@@ -1,4 +1,5 @@
 export const ROUTES = {
     SIGNIN: '/signin',
-    SIGNUP: '/signup'
+    SIGNUP: '/signup',
+    CREATE_ACCOUNT: '/createAccount'
 }

@@ -1,5 +1,6 @@
 import {BrowserRouter as ReactRouter, Route, RouteProps, Switch} from 'react-router-dom';
 import { ROUTES } from './constants/routes';
+import { CreateAccount } from './pages/createAccount';
 import { Signin } from './pages/signin';
 import { SignUp } from './pages/signup';
 
@@ -14,6 +15,11 @@ export function Router(){
         {
             children: <SignUp />,
             path: ROUTES.SIGNUP,    
+            exact: true,
+        },
+        {
+            children: <CreateAccount />,
+            path: ROUTES.CREATE_ACCOUNT,    
             exact: true,
         },
         {

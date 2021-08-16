@@ -1,4 +1,4 @@
-import { Button, CircularProgress, TextField, Snackbar, TextFieldProps } from '@material-ui/core';
+import { Button, CircularProgress, TextField, Snackbar, TextFieldProps, Box, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { useEffect, useState } from 'react';
 import { UnpackNestedValue, useForm } from 'react-hook-form';
@@ -11,10 +11,11 @@ interface FormProps <REQ, RES> {
     axiosResponse: Omit<UseAxiosResponse<REQ, RES>, 'execute' | 'data'>;
     onSubmit: (data: UnpackNestedValue<REQ>) => Promise<void>;
     inputs: InterfaceRegistrableInputProps;
+    formName: string;
     buttonText: string;
 }
 
-export function Form<REQ, RES>({axiosResponse, onSubmit, inputs, buttonText}: FormProps<REQ, RES>){
+export function Form<REQ, RES>({axiosResponse, onSubmit, inputs, buttonText, formName}: FormProps<REQ, RES>){
     const classes = useStyles();
     const { register, handleSubmit } = useForm();
     const [openError, setOpenError] = useState<boolean>();
@@ -26,6 +27,8 @@ export function Form<REQ, RES>({axiosResponse, onSubmit, inputs, buttonText}: Fo
     }, [unexpectedError])
 
     return (
+        <Box className={classes.root}>
+            <Typography component="h1" variant="h5">{formName}</Typography>
             <form className={classes.form} noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
                 {inputs.map(({registerName, variant, required, margin, fullWidth, ...rest}) => (
                     <TextField
@@ -47,6 +50,6 @@ export function Form<REQ, RES>({axiosResponse, onSubmit, inputs, buttonText}: Fo
                 </Alert>
             </Snackbar>
             </form>
-
+        </Box>
     )
 }
