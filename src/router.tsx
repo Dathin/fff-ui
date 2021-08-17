@@ -1,6 +1,9 @@
 import {BrowserRouter as ReactRouter, Route, RouteProps, Switch} from 'react-router-dom';
+import { Footer } from './components/footer';
+import { Header } from './components/header';
 import { ROUTES } from './constants/routes';
 import { CreateAccount } from './pages/createAccount';
+import { Home } from './pages/home';
 import { Signin } from './pages/signin';
 import { SignUp } from './pages/signup';
 
@@ -23,7 +26,7 @@ export function Router(){
             exact: true,
         },
         {
-            children: <h1>F</h1>,
+            children: <Home />,
             path: '*',    
             exact: true,
         }
@@ -32,7 +35,7 @@ export function Router(){
     return (
         <ReactRouter>
             <Switch>
-                {routes.map((route, index) => (<Route key={index} {...route}></Route>))}
+                {routes.map(({children, ...rest}, index) => (<Route key={index} {...rest}><><Header />{children}<Footer /></></Route>))}
             </Switch>
         </ReactRouter>
     )
