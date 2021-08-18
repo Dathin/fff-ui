@@ -35,7 +35,9 @@ export function Router(){
 
     return (
         <>
-            <Header />
+            <UserProvider>
+                <Header />
+            </UserProvider>
             <ReactRouter>
                 <UserProvider>
                     <Switch>
