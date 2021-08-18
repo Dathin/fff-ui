@@ -33,10 +33,15 @@ export function Router(){
     ]
 
     return (
-        <ReactRouter>
-            <Switch>
-                {routes.map(({children, ...rest}, index) => (<Route key={index} {...rest}><><Header />{children}<Footer /></></Route>))}
-            </Switch>
-        </ReactRouter>
+        <>
+            <Header />
+            <ReactRouter>
+                <Switch>
+                    {routes.map(({children, ...rest}, index) => (<Route key={index} {...rest}><>{children}</></Route>))}
+                </Switch>
+            </ReactRouter>
+            <Footer />
+        </>
+
     )
 }
