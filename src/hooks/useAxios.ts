@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 interface UseAxios {
     get: <RES>(uri: string, config?: AxiosRequestConfig) => Promise<AxiosResponse<RES>>
-    post: <REQ, RES>(uri: string, data: REQ, config?: AxiosRequestConfig) => Promise<AxiosResponse<RES>>
+    post: <RES, REQ = undefined>(uri: string, data?: REQ, config?: AxiosRequestConfig) => Promise<AxiosResponse<RES>>
 }
 
 export function useAxios(): UseAxios{
@@ -19,7 +19,7 @@ export function useAxios(): UseAxios{
     });
 
     const get = async <RES> (uri: string, config?: AxiosRequestConfig): Promise<AxiosResponse<RES>> => await axiosInstance.get<RES>(uri, config);
-    const post = async <REQ, RES> (uri: string, data: REQ, config?: AxiosRequestConfig): Promise<AxiosResponse<RES>> => await axiosInstance.post<RES>(uri, data, config)
+    const post = async <RES, REQ = undefined> (uri: string, data: REQ, config?: AxiosRequestConfig): Promise<AxiosResponse<RES>> => await axiosInstance.post<RES>(uri, data, config)
 
     return {
         get,

@@ -15,7 +15,7 @@ export interface SignInResponse {
 export function useSignIn() {
     const {post} = useAxios();
 
-    const request = async (data: SignInRequest) => await post<SignInRequest, SignInResponse>(API_ROUTES.USER.SIGN_IN, data);
+    const request = async (data?: SignInRequest) => await post<SignInResponse, SignInRequest>(API_ROUTES.USER.SIGN_IN, data);
 
     return useAxiosResponse(request);
 }

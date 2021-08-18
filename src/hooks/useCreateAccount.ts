@@ -15,7 +15,7 @@ export interface CreateAccountResponse {
 export function useCreateAccount() {
     const {post} = useAxios();
 
-    const request = async (data: CreateAccountRequest) => await post<CreateAccountRequest, CreateAccountResponse>(API_ROUTES.ACCOUNT.CREATE, data);
+    const request = async (data?: CreateAccountRequest) => await post<CreateAccountResponse, CreateAccountRequest>(API_ROUTES.ACCOUNT.CREATE, data);
 
     return useAxiosResponse(request);
 }

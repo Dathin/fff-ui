@@ -4,6 +4,7 @@ export const API_ROUTES = {
         SIGN_IN: 'user/login'
     },
     ACCOUNT: {
-        CREATE: 'account'
+        CREATE: 'account',
+        LIST: 'account'
     }
 }

@@ -16,7 +16,7 @@ export interface SignUpResponse {
 export function useSignUp() {
     const {post} = useAxios();
 
-    const request = async (data: SignUpRequest) => await post<SignUpRequest, SignUpResponse>(API_ROUTES.USER.SIGN_UP, data);
+    const request = async (data?: SignUpRequest) => await post<SignUpResponse, SignUpRequest>(API_ROUTES.USER.SIGN_UP, data);
 
     return useAxiosResponse(request);
 }
