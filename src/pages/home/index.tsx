@@ -2,6 +2,10 @@ import { Box, Typography } from "@material-ui/core";
 import { DescriptiveIcon } from "../../components/descriptiveIcon";
 import { ToggleOn } from "../../components/toggleOn";
 import { useStyles } from "./styles";
+import MoneyOffIcon from '@material-ui/icons/MoneyOff';
+import LaunchIcon from '@material-ui/icons/Launch';
+import SettingsIcon from '@material-ui/icons/Settings';
+import TimelineIcon from '@material-ui/icons/Timeline';
 
 export function Home(){
     const classes = useStyles();
@@ -16,10 +20,10 @@ export function Home(){
             <ToggleOn />
         </Box>
         <Box className={classes.icons}>
-            <DescriptiveIcon description={"It's and will always be unlimeted and free"} icon={null!}></DescriptiveIcon>
-            <DescriptiveIcon description={"Don’t worry scaling up. Our cloud solution will do the hard work for you while you will just have to decide if it’s on or off"} icon={null!}></DescriptiveIcon>
-            <DescriptiveIcon description={"Developer first. You can extract 100% of our platform from our SDK’s or API"} icon={null!}></DescriptiveIcon>
-            <DescriptiveIcon description={"Data is gold. You can measure all your usage"} icon={null!}></DescriptiveIcon>
+            <DescriptiveIcon description={"It's and will always be unlimeted and free"} icon={MoneyOffIcon} />
+            <DescriptiveIcon description={"Don’t worry scaling up. Our cloud solution will do the hard work for you while you will just have to decide if it’s on or off"} icon={LaunchIcon}></DescriptiveIcon>
+            <DescriptiveIcon description={"Developer first. You can extract 100% of our platform from our SDK’s or API"} icon={SettingsIcon}></DescriptiveIcon>
+            <DescriptiveIcon description={"Data is gold. You can measure all your usage"} icon={TimelineIcon}></DescriptiveIcon>
         </Box>
     </Box>)
 }
