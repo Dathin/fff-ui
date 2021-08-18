@@ -6,7 +6,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
         backgroundColor: theme.palette.background.paper,
         padding: `${theme.spacing(1)}px ${theme.spacing(8)}px`,
         textAlign: 'center',
-        position: 'absolute',
+        position: 'fixed',
         bottom: 0,
         width: '100%'
     }
