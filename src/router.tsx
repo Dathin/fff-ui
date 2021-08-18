@@ -36,11 +36,9 @@ export function Router(){
 
     return (
         <>
-            <UserProvider>
-                <Header />
-            </UserProvider>
             <ReactRouter>
                 <UserProvider>
+                    <Header />
                     <Switch>
                         {routes.map(({children, ...rest}, index) => (<CustomRoute key={index} {...rest}>{children}</CustomRoute>))}
                     </Switch>

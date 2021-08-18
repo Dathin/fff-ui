@@ -12,7 +12,7 @@ export function Signin() {
     const classes = useStyles();
     let history = useHistory();
     const {execute: apiSignIn, data, unexpectedError, validationError, loading } = useSignIn();
-    
+
     useEffect(() => {
         if(data?.token) {
             signIn(data.token);
