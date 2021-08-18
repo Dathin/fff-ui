@@ -37,7 +37,7 @@ export function Signin() {
 
     return (
         <>
-            <Form axiosResponse={{unexpectedError, validationError, loading}} onSubmit={onSubmit} inputs={inputs} buttonText="Sign in" formName="Sign in"></Form>
+            <Form axiosResponse={{unexpectedError, validationError, loading}} onSubmit={onSubmit} inputs={inputs} buttonText="Sign In" formName="Sign In"></Form>
             <Box className={classes.or} onClick={() => history.push(ROUTES.SIGNUP)}>
                 <Divider />&nbsp;Or Sign Up&nbsp;<Divider />
             </Box>
