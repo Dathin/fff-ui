@@ -37,8 +37,8 @@ export function SignUp(){
     return (
         <>
             <Form axiosResponse={{unexpectedError, validationError, loading}} onSubmit={onSubmit} inputs={inputs} buttonText="Sign up" formName="Sign Up" />
-            <Box className={classes.or}>
-                <Divider className={classes.divider}/>&nbsp;Or Sign up&nbsp;<Divider className={classes.divider}/>
+            <Box className={classes.or} onClick={() => history.push(ROUTES.SIGNIN)}>
+                <Divider />&nbsp;Or Sign In&nbsp;<Divider />
             </Box>
         </>
     )
