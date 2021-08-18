@@ -2,6 +2,7 @@ import {BrowserRouter as ReactRouter, Route, RouteProps, Switch} from 'react-rou
 import { Footer } from './components/footer';
 import { Header } from './components/header';
 import { ROUTES } from './constants/routes';
+import { UserProvider } from './context/userContext';
 import { CreateAccount } from './pages/createAccount';
 import { Home } from './pages/home';
 import { Signin } from './pages/signin';
@@ -36,9 +37,11 @@ export function Router(){
         <>
             <Header />
             <ReactRouter>
-                <Switch>
-                    {routes.map(({children, ...rest}, index) => (<Route key={index} {...rest}><>{children}</></Route>))}
-                </Switch>
+                <UserProvider>
+                    <Switch>
+                        {routes.map(({children, ...rest}, index) => (<Route key={index} {...rest}>{children}</Route>))}
+                    </Switch>
+                </UserProvider>
             </ReactRouter>
             <Footer />
         </>

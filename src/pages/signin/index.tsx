@@ -2,25 +2,25 @@ import { Box, Divider } from '@material-ui/core';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, InterfaceRegistrableInputProps } from '../../components/form';
-import { LOCAL_STORAGE } from '../../constants/localStorage';
 import { ROUTES } from '../../constants/routes';
+import { useUser } from '../../context/userContext';
 import { SignInRequest, useSignIn } from '../../hooks/useSignIn';
 import { useStyles } from './styles';
 
 export function Signin() {
+    const { signIn } = useUser();
     const classes = useStyles();
     let history = useHistory();
-    const {execute: signIn, data, unexpectedError, validationError, loading } = useSignIn();
+    const {execute: apiSignIn, data, unexpectedError, validationError, loading } = useSignIn();
     
     useEffect(() => {
         if(data?.token) {
-            localStorage.setItem(LOCAL_STORAGE.TOKEN, data.token);
-            history.push(ROUTES.CREATE_ACCOUNT)
+            signIn(data.token);
         }
-    }, [data, history])
+    }, [data, signIn])
 
     const onSubmit = async (signInRequest: SignInRequest) => {
-        signIn({...signInRequest, webClient: true});
+        apiSignIn({...signInRequest, webClient: true});
     };
 
     const inputs: InterfaceRegistrableInputProps = [
