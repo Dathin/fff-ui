@@ -6,7 +6,7 @@ import { useStyles } from "./styles";
 export function ToggleOn(){
     
     const classes = useStyles();
-    const history = useHistory();
+    let history = useHistory();
 
     return (<Box className={classes.root}>
                 <Typography variant="h5">Try it out:</Typography>

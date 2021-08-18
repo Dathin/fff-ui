@@ -1,10 +1,10 @@
-import { Box, Link } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { useStyles } from "./styles";
 
 export function Header(){
-    const history = useHistory();
+    let history = useHistory();
     const classes = useStyles();
     
     return (
