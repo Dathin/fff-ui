@@ -1,4 +1,4 @@
-import { Form, InterfaceRegistrableInputProps } from '../../components/form';
+import { Form, InterfaceRegistrableInputProps } from '../form';
 import { CreateAccountRequest, useCreateAccount } from '../../hooks/useCreateAccount';
 
 

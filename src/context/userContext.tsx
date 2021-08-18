@@ -10,26 +10,20 @@ interface UserProviderProps {
 
 interface UserContextData {
     isAuthenticated: boolean;
-    signIn: (token: string) => void
-    signOut: () => void
+    signIn: (token: string) => void;
+    signOut: () => void;
 }
 
 const UserContext = createContext({} as UserContextData)
 
 export function UserProvider({children}: UserProviderProps){
     let history = useHistory();
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-
-    useEffect(() => {
-        if(localStorage.getItem(LOCAL_STORAGE.TOKEN)){
-            setIsAuthenticated(true);
-        }
-    }, []);
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem(LOCAL_STORAGE.TOKEN));
 
     function signIn(token: string){
         localStorage.setItem(LOCAL_STORAGE.TOKEN, token);
         setIsAuthenticated(true);
-        history.push(ROUTES.CREATE_ACCOUNT);
+        history.push(ROUTES.MAIN);
     }
 
     function signOut(){
