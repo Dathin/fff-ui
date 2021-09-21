@@ -1,14 +1,18 @@
 import { Form, InterfaceRegistrableInputProps } from '../../components/form';
+import { useMain } from '../../context/mainContext';
+import { AccountResponse, useAccounts } from '../../hooks/useAccounts';
 import { CreateAccountRequest, useCreateAccount } from '../../hooks/useCreateAccount';
 
 
 export function CreateAccount(){
 
-    const {execute: createAccount, unexpectedError, validationError, loading } = useCreateAccount();
+    const { setAccounts } = useMain();
+    const {execute: createAccount, unexpectedError, validationError, loading, data } = useCreateAccount();
 
 
     const onSubmit = async (createAccountRequest: CreateAccountRequest) => {
-        createAccount(createAccountRequest);
+        await createAccount(createAccountRequest);
+        setAccounts([data as any])
     };
 
     const inputs: InterfaceRegistrableInputProps = [

@@ -3,7 +3,7 @@ import { useAxios } from "./useAxios";
 import { useAxiosResponse } from "./useAxiosResponse";
 
 
-export interface AccountsResponse {
+export interface AccountResponse {
     id: number;
     name: string;
 }
@@ -11,7 +11,7 @@ export interface AccountsResponse {
 export function useAccounts() {
     const {get} = useAxios();
 
-    const request = async () => await get<AccountsResponse[]>(API_ROUTES.ACCOUNT.LIST);
+    const request = async () => await get<AccountResponse[]>(API_ROUTES.ACCOUNT.LIST);
 
     return useAxiosResponse(request);
 }

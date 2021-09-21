@@ -3,6 +3,7 @@ import { Footer } from './components/footer';
 import { Header } from './components/header';
 import { CustomRoute, CustomRouteProps } from './components/privateRoute';
 import { ROUTES } from './constants/routes';
+import { MainProvider } from './context/mainContext';
 import { UserProvider } from './context/userContext';
 import { Home } from './pages/home';
 import { Main } from './pages/main';
@@ -23,7 +24,7 @@ export function Router(){
             exact: true,
         },
         {
-            children: <Main />,
+            children: <MainProvider><Main /></MainProvider>,
             path: ROUTES.MAIN,    
             exact: true,
             authenticated: true,

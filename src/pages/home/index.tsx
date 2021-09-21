@@ -6,9 +6,21 @@ import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 import LaunchIcon from '@material-ui/icons/Launch';
 import SettingsIcon from '@material-ui/icons/Settings';
 import TimelineIcon from '@material-ui/icons/Timeline';
+import { useUser } from "../../context/userContext";
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import { ROUTES } from "../../constants/routes";
 
 export function Home(){
     const classes = useStyles();
+    const { isAuthenticated } = useUser();
+    let history = useHistory();
+
+    useEffect(() => {
+        if(isAuthenticated) {
+            history.push(ROUTES.MAIN)
+        }
+    }, [isAuthenticated, history])
 
 
     return (<Box className={classes.root}>

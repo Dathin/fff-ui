@@ -8,7 +8,7 @@ import { SignInRequest, useSignIn } from '../../hooks/useSignIn';
 import { useStyles } from './styles';
 
 export function Signin() {
-    const { signIn } = useUser();
+    const { signIn, isAuthenticated } = useUser();
     const classes = useStyles();
     let history = useHistory();
     const {execute: apiSignIn, data, unexpectedError, validationError, loading } = useSignIn();
@@ -18,6 +18,12 @@ export function Signin() {
             signIn(data.token);
         }
     }, [data, signIn])
+
+    useEffect(() => {
+        if(isAuthenticated) {
+            history.push(ROUTES.MAIN)
+        }
+    }, [isAuthenticated, history])
 
     const onSubmit = async (signInRequest: SignInRequest) => {
         apiSignIn({...signInRequest, webClient: true});
